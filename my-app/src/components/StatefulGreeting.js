@@ -1,9 +1,23 @@
 import React from "react";
 
 class StatefulGreeting extends React.Component {
+    constructor(props) {
+        super(props);
+        // Initializing state in the constructor
+        this.state = {
+        introduction: "Hello, welcome to the stateful component!",
+        textButton: "Click "
+        };
+    }
   
   render() {
-    return <h1>Stateful Class Greeting!! {this.props.greetings}</h1>;
+    return( 
+      <div>
+        <h1>Stateful Class Greeting!! {this.props.greetings}</h1>
+        <h3>{this.state.introduction}</h3>
+        <button>{this.state.textButton}</button>
+      </div>
+    )
   }
 }
 
