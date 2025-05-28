@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import FunctionalGreeting from './components/functionalGreeting'; 
 import FunctionalGreetingWithProp from './components/functionalGreetingWithProp'; // Importing the functional component with props
+import StatefulGreeting from './components/StatefulGreeting';
 
 // This app function is actually a functional component in itself.
 function App() { 
@@ -11,6 +12,7 @@ function App() {
       <h1>Hki loool </h1>
       <FunctionalGreeting />
       <FunctionalGreetingWithProp name="John" greeting="nice to meet you" />
+      <StatefulGreeting greetings="with props"/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
