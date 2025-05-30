@@ -9,13 +9,30 @@ class StatefulGreeting extends React.Component {
         textButton: "Click "
         };
     }
+
+    handleClick() {
+        // Updating the state when the button is clicked using setSate and merge the new state with the old one
+        this.setState({
+            introduction: "You clicked the button!",
+            textButton: "Clicked!"
+        }, () => {
+            // Callback function to log the updated state
+            console.log("new state: ", this.state.introduction )
+            console.log("new state: ", this.state.textButton )
+        });
+        // Logging the state before the update
+        console.log(this.state.introduction);
+        console.log(this.state.textButton);
+
+        
+    }
   
   render() {
     return( 
       <div>
         <h1>Stateful Class Greeting!! {this.props.greetings}</h1>
         <h3>{this.state.introduction}</h3>
-        <button>{this.state.textButton}</button>
+        <button onClick={() => this.handleClick()}>{this.state.textButton}</button>
       </div>
     )
   }
