@@ -28,27 +28,25 @@ class StatefulGreeting extends React.Component {
 
     handleClick2() {
         // Updating the state when the second button is clicked
-        this.setState({
-            introduction: this.state.introduction === "Hello, welcome to the stateful component!" ? "You clicked the second button!": "Hello, welcome to the stateful component!" ,
-            textButton: this.state.textButton === "Click" ? "Clicked again!" : "Click",
-        }, () => {
-            // Callback function to log the updated state
-            console.log("new state: ", this.state.introduction )
-            console.log("new state: ", this.state.textButton )
-        });
-        // Logging the state before the update
-        console.log(this.state.introduction);
-        console.log(this.state.textButton);  
+        this.setState((prevState, prevProps) => {
+          console.log("Previous State:", prevState);
+          console.log("Previous Props:", prevProps);
+          return {
+            introduction: prevState.introduction === "Hello, welcome to the stateful component!" ? "You clicked the second button!": "Hello, welcome to the stateful component!" ,
+            buttonText: prevState.buttonText === "Click" ? "Clicked again!" : "Click",
+            }
+    });
     }
 
     increament() {
         // Incrementing the count in the state
-        this.setState({
-            count: this.state.count + 1
-        }, () => {
-            // Callback function to log the updated count
-            console.log("Count incremented: ", this.state.count);
-        })
+        this.setState((prevState, prevProps) => {
+          console.log("Previous State:", prevState);
+          console.log("Previous Props:", prevProps);
+          return {
+            count: prevState.count + 1,
+          };
+    });
     }
   
   render() {
@@ -58,7 +56,9 @@ class StatefulGreeting extends React.Component {
         <h3>{this.state.introduction}</h3>
         {/* <button onClick={() => this.handleClick()}>{this.state.textButton}</button> */}
         <button onClick={() => this.handleClick2()}>{this.state.textButton}</button>
-      
+        <h3>Previous State: {this.state.introduction}</h3>
+        <h3>Previous Button Text: {this.state.textButton}</h3>
+
         <h2>Count: {this.state.count}</h2>
         <button onClick={() => this.increament()}>Increment Count</button>
     </div>
